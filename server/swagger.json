@@ -1,0 +1,2140 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Food Delivery API",
+    "description": "API for food delivery system including user, vendor, delivery agent, and analytics functionality",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5050/api/v1",
+      "description": "Local development server"
+    }
+  ],
+  "paths": {
+    "/auth/vendor/Signup": {
+      "post": {
+        "tags": ["Vendor"],
+        "summary": "Vendor signup",
+        "operationId": "vendorSignup",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "firstname": {
+                    "type": "string",
+                    "example": "kevin"
+                  },
+                  "lastname": {
+                    "type": "string",
+                    "example": "patel"
+                  },
+                  "number": {
+                    "type": "integer",
+                    "example": 9876543210
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "kevin.doe@example.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "StrongPassword123"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Vendor registered successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Vendor registered successfully!"
+                    },
+                    "token": {
+                      "type": "string",
+                      "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODFiMzc3NGEwYzI1ZWU4YThjNTk0MTciLCJlbWFpbCI6Imtpbi5kb2VAZXhhbXBsZS5jb20iLCJyb2xlIjoidmVuZG9yIiwiaWF0IjoxNzQ2NjE0MTMyLCJleHAiOjE3NDY3MDA1MzJ9.3N9fOCW-YnMt0hOcIjruL_SPHh1y2W_ATcbJOED52ag"
+                    },
+                    "vendor": {
+                      "type": "object",
+                      "properties": {
+                        "userId": {
+                          "type": "string",
+                          "example": "681b3774a0c25ee8a8c59417"
+                        },
+                        "firstname": {
+                          "type": "string",
+                          "example": "kevin"
+                        },
+                        "lastname": {
+                          "type": "string",
+                          "example": "patel"
+                        },
+                        "fullname": {
+                          "type": "string",
+                          "example": "kevin patel"
+                        },
+                        "number": {
+                          "type": "integer",
+                          "example": 9876543210
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "kin.doe@example.com"
+                        },
+                        "isActive": {
+                          "type": "boolean",
+                          "example": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/auth/vendor/Login": {
+      "post": {
+        "tags": ["Vendor"],
+        "summary": "Vendor login",
+        "operationId": "vendorLogin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "kevin.doe@example.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "StrongPassword123"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Vendor login successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Vendor login successful!"
+                    },
+                    "token": {
+                      "type": "string",
+                      "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODEzMmU3NDViYTIyODQ5YzY0OTlkZWQiLCJlbWFpbCI6ImtldmluLmRvZUBleGFtcGxlLmNvbSIsInJvbGUiOiJ2ZW5kb3IiLCJpYXQiOjE3NDY2MTQ3ODgsImV4cCI6MTc0NjcwMTE4OH0.m8qx0aZWMqwsHmdWTBMKcc3x0lr4V5jidTGcazWdhFY"
+                    },
+                    "vendor": {
+                      "type": "object",
+                      "properties": {
+                        "userId": {
+                          "type": "string",
+                          "example": "68132e745ba22849c6499ded"
+                        },
+                        "firstname": {
+                          "type": "string",
+                          "example": "kevin"
+                        },
+                        "lastname": {
+                          "type": "string",
+                          "example": "patel"
+                        },
+                        "fullname": {
+                          "type": "string",
+                          "example": "kevin patel"
+                        },
+                        "number": {
+                          "type": "integer",
+                          "example": 9876543210
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "kevin.doe@example.com"
+                        },
+                        "isActive": {
+                          "type": "boolean",
+                          "example": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid credentials"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+"/auth/vendor/updateDetail": {
+  "put": {
+    "tags": ["Vendor"],
+    "summary": "Update vendor details",
+    "operationId": "updateVendorDetails",
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "firstname": {
+                "type": "string",
+                "example": "kevin"
+              },
+              "lastname": {
+                "type": "string",
+                "example": "patel"
+              },
+              "number": {
+                "type": "integer",
+                "example": 9876543210
+              },
+              "email": {
+                "type": "string",
+                "example": "kevin.doe@example.com"
+              },
+              "totalTables": {
+                "type": "integer",
+                "example": 20
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Vendor details updated successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Vendor updated successfully!"
+                },
+                "token": {
+                  "type": "string",
+                  "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODEzMmU3NDViYTIyODQ5YzY0OTlkZWQiLCJlbWFpbCI6ImtldmluLmRvZUBleGFtcGxlLmNvbSIsInJvbGUiOiJ2ZW5kb3IiLCJpYXQiOjE3NDY2MTUxMzksImV4cCI6MTc0NjcwMTUzOX0.c7bDkMXM8vJbHF9Y8e2tOSIYT2cMWL-_qXxkL6i-m8M"
+                },
+                "vendor": {
+                  "type": "object",
+                  "properties": {
+                    "userId": {
+                      "type": "string",
+                      "example": "68132e745ba22849c6499ded"
+                    },
+                    "firstname": {
+                      "type": "string",
+                      "example": "kevin"
+                    },
+                    "lastname": {
+                      "type": "string",
+                      "example": "patel"
+                    },
+                    "fullname": {
+                      "type": "string",
+                      "example": "kevin patel"
+                    },
+                    "number": {
+                      "type": "integer",
+                      "example": 9876543210
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "kevin.doe@example.com"
+                    },
+                    "totalTables": {
+                      "type": "integer",
+                      "example": 20
+                    },
+                    "isActive": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+},
+"/vendor/deliveryAgent/Signup": {
+  "post": {
+    "tags": ["Vendor"],
+    "summary": "Create delivery agent",
+    "operationId": "createDeliveryAgent",
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "firstname": {
+                "type": "string",
+                "example": "Johnson"
+              },
+              "lastname": {
+                "type": "string",
+                "example": "Doe"
+              },
+              "number": {
+                "type": "integer",
+                "example": 98764153210
+              },
+              "email": {
+                "type": "string",
+                "example": "johnson.doe@example.com"
+              },
+              "password": {
+                "type": "string",
+                "example": "securePass123"
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Delivery agent created successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Delivery agent registered successfully!"
+                },
+                "token": {
+                  "type": "string",
+                  "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODFiM2QyMmUzYjIwNTAyZGQwMmMxZmQiLCJlbWFpbCI6Impvb24uZG9lQGV4YW1wbGUuY29tIiwicm9sZSI6ImRlbGl2ZXJ5QWdlbnQiLCJpYXQiOjE3NDY2MTU1ODYsImV4cCI6MTc0NjcwMTk4Nn0.YvQ-Z-oJWn8oECCLlcxbSXEVItFFvNbAf8_TJsN5sKs"
+                },
+                "deliveryAgent": {
+                  "type": "object",
+                  "properties": {
+                    "userId": {
+                      "type": "string",
+                      "example": "681b3d22e3b20502dd02c1fd"
+                    },
+                    "firstname": {
+                      "type": "string",
+                      "example": "kenillll"
+                    },
+                    "lastname": {
+                      "type": "string",
+                      "example": "patilll"
+                    },
+                    "number": {
+                      "type": "integer",
+                      "example": 98764153210
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "joon.doe@example.com"
+                    },
+                    "vendorId": {
+                      "type": "string",
+                      "example": "68132e745ba22849c6499ded"
+                    },
+                    "isActive": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+},
+
+   "/vendor/createMenuItem": {
+  "post": {
+    "tags": ["Vendor"],
+    "summary": "Create menu item",
+    "operationId": "createMenuItem",
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "requestBody": {
+      "content": {
+        "multipart/form-data": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "Breakfast"
+              },
+              "name": {
+                "type": "string",
+                "example": "tea"
+              },
+              "price": {
+                "type": "integer",
+                "example": 120
+              },
+              "category": {
+                "type": "string",
+                "example": "Veg"
+              },
+              "cuisine": {
+                "type": "string",
+                "example": "North Indian"
+              },
+              "image": {
+                "type": "string",
+                "format": "binary"
+              }
+            },
+            "required": ["type", "name", "price", "category", "cuisine", "image"]
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Menu item created successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Menu item added successfully!"
+                },
+                "menuItem": {
+                  "type": "object",
+                  "properties": {
+                    "vendorId": {
+                      "type": "string",
+                      "example": "68132e745ba22849c6499ded"
+                    },
+                    "type": {
+                      "type": "string",
+                      "example": "Breakfast"
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": "tea"
+                    },
+                    "price": {
+                      "type": "integer",
+                      "example": 120
+                    },
+                    "image": {
+                      "type": "string",
+                      "example": "/item/1746615955872.webp"
+                    },
+                    "category": {
+                      "type": "string",
+                      "example": "Veg"
+                    },
+                    "cuisine": {
+                      "type": "string",
+                      "example": "North Indian"
+                    },
+                    "_id": {
+                      "type": "string",
+                      "example": "681b3e8eaf0bef6e777cd46d"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2025-05-07T11:05:50.703Z"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2025-05-07T11:05:50.703Z"
+                    },
+                    "__v": {
+                      "type": "integer",
+                      "example": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+},
+
+
+
+
+
+   "/menu/getVendors": {
+  "post": {
+    "tags": ["Menu"],
+    "summary": "Get vendors with filtering options",
+    "description": "Retrieves vendors along with their menu items using filters. Uses POST to handle complex filter criteria.",
+    "operationId": "getVendors",
+    "security": [{"bearerAuth": []}],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/VendorFilter"
+          },
+          "example": {
+            "category": ["Veg"],
+            "cuisine": ["Gujarati", "South Indian"],
+            "priceSort": 1
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Vendors retrieved successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/VendorsResponse"
+            },
+            "example": {
+              "success": true,
+              "message": "All vendors with their menus retrieved successfully",
+              "vendors": [
+                {
+                  "_id": "68132e745ba22849c6499ded",
+                  "firstname": "kevin",
+                  "lastname": "patel",
+                  "number": 9876512210,
+                  "email": "kevin.doe@example.com",
+                  "totalTables": 20,
+                  "isActive": true,
+                  "createdAt": "2025-05-01T08:19:00.210Z",
+                  "updatedAt": "2025-05-07T10:59:01.298Z",
+                  "fullname": "kevin patel",
+                  "menu": [
+                    {
+                      "_id": "68133114ecf96a7ae0a0cc07",
+                      "vendorId": "68132e745ba22849c6499ded",
+                      "type": "Lunch",
+                      "name": "rice",
+                      "price": 1500,
+                      "image": "/item/1746088213384.png",
+                      "category": "Veg",
+                      "cuisine": "Gujarati",
+                      "createdAt": "2025-05-01T08:30:12.597Z",
+                      "updatedAt": "2025-05-01T08:30:12.597Z"
+                    },
+                    {
+                      "_id": "6813311cecf96a7ae0a0cc09",
+                      "vendorId": "68132e745ba22849c6499ded",
+                      "type": "Lunch",
+                      "name": "thali",
+                      "price": 1500,
+                      "image": "/item/1746088228897.png",
+                      "category": "Veg",
+                      "cuisine": "Gujarati",
+                      "createdAt": "2025-05-01T08:30:20.095Z",
+                      "updatedAt": "2025-05-01T08:30:20.095Z"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Invalid request parameters"
+      },
+      "401": {
+        "description": "Unauthorized - Invalid or missing token"
+      },
+      "500": {
+        "description": "Internal server error"
+      }
+    }
+  }
+},
+
+"/menu/getVendor/{id}": {
+  "get": {
+    "tags": ["Menu"],
+    "summary": "Get vendor by ID with menu",
+    "operationId": "getVendorById",
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "parameters": [
+      {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "example": "68132e745ba22849c6499ded",
+        "description": "Vendor ID to fetch"
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Vendor details retrieved successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Vendor details retrieved successfully!"
+                },
+                "vendors": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "_id": {
+                        "type": "string",
+                        "example": "68132e745ba22849c6499ded"
+                      },
+                      "firstname": {
+                        "type": "string",
+                        "example": "kevin"
+                      },
+                      "lastname": {
+                        "type": "string",
+                        "example": "patel"
+                      },
+                      "email": {
+                        "type": "string",
+                        "example": "kevin.doe@example.com"
+                      },
+                      "number": {
+                        "type": "integer",
+                        "example": 9876512210
+                      },
+                      "totalTables": {
+                        "type": "integer",
+                        "example": 20
+                      },
+                      "isActive": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "fullname": {
+                        "type": "string",
+                        "example": "kevin patel"
+                      },
+                      "menu": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "_id": {
+                              "type": "string",
+                              "example": "68133114ecf96a7ae0a0cc07"
+                            },
+                            "vendorId": {
+                              "type": "string",
+                              "example": "68132e745ba22849c6499ded"
+                            },
+                            "type": {
+                              "type": "string",
+                              "example": "Lunch"
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "rice"
+                            },
+                            "price": {
+                              "type": "integer",
+                              "example": 1500
+                            },
+                            "image": {
+                              "type": "string",
+                              "example": "/item/1746088213384.png"
+                            },
+                            "category": {
+                              "type": "string",
+                              "example": "Veg"
+                            },
+                            "cuisine": {
+                              "type": "string",
+                              "example": "Gujarati"
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2025-05-01T08:30:12.597Z"
+                            },
+                            "updatedAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2025-05-01T08:30:12.597Z"
+                            },
+                            "__v": {
+                              "type": "integer",
+                              "example": 0
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Something went wrong"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+},
+
+
+"/menu/getVendorMeals": {
+  "post": {
+    "tags": ["Menu"],
+    "summary": "Get vendor meals by type",
+    "description": "Retrieves all menu items for a specific vendor filtered by meal type (e.g., Breakfast, Lunch, Dinner)",
+    "operationId": "getVendorMeals",
+    "security": [{"bearerAuth": []}],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "#/components/schemas/VendorMealsRequest"
+          },
+          "example": {
+            "vendorId": "68132e745ba22849c6499ded",
+            "type": "Lunch"
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Vendor meals retrieved successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/VendorMealsResponse"
+            },
+            "example": {
+              "success": true,
+              "message": "Vendor menu details retrieved successfully!",
+              "menu": [
+                {
+                  "_id": "68133100ecf96a7ae0a0cc05",
+                  "vendorId": "68132e745ba22849c6499ded",
+                  "type": "Lunch",
+                  "name": "bhel",
+                  "price": 1500000,
+                  "image": "/item/1746088193774.png",
+                  "category": "Veg",
+                  "cuisine": "Gujarati",
+                  "createdAt": "2025-05-01T08:29:52.411Z",
+                  "updatedAt": "2025-05-01T08:29:52.411Z"
+                },
+                {
+                  "_id": "68133114ecf96a7ae0a0cc07",
+                  "vendorId": "68132e745ba22849c6499ded",
+                  "type": "Lunch",
+                  "name": "rice",
+                  "price": 1500,
+                  "image": "/item/1746088213384.png",
+                  "category": "Veg",
+                  "cuisine": "Gujarati",
+                  "createdAt": "2025-05-01T08:30:12.597Z",
+                  "updatedAt": "2025-05-01T08:30:12.597Z"
+                },
+                {
+                  "_id": "6813311cecf96a7ae0a0cc09",
+                  "vendorId": "68132e745ba22849c6499ded",
+                  "type": "Lunch",
+                  "name": "thali",
+                  "price": 1500,
+                  "image": "/item/1746088228897.png",
+                  "category": "Veg",
+                  "cuisine": "Gujarati",
+                  "createdAt": "2025-05-01T08:30:20.095Z",
+                  "updatedAt": "2025-05-01T08:30:20.095Z"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Invalid request - missing vendorId or type"
+      },
+      "401": {
+        "description": "Unauthorized - invalid or missing authentication token"
+      },
+      "404": {
+        "description": "Vendor not found or no meals available for specified type"
+      },
+      "500": {
+        "description": "Internal server error"
+      }
+    }
+  }
+},
+
+    
+"/order/GenerateBillByTable": {
+    "post": {
+      "tags": ["Order"],
+      "summary": "Generate bill for a table and update payment status",
+      "description": "Completes the order for a specific table and generates the final bill with payment details.",
+      "operationId": "generateBillByTable",
+      "security": [
+        {
+          "bearerAuth": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/GenerateBillRequest"
+            },
+            "example": {
+              "tableNo": 6,
+              "paymentStatus": "Paid"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Bill generated successfully",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BillResponse"
+              },
+              "example": {
+                "success": true,
+                "message": "Order for Table 6 completed successfully.",
+                "bill": {
+                  "tableNo": 6,
+                  "orderId": "681afda633386dd2057cc1ca",
+                  "items": [
+                    {
+                      "menuItemId": {
+                        "_id": "68133114ecf96a7ae0a0cc07",
+                        "vendorId": "68132e745ba22849c6499ded",
+                        "type": "Lunch",
+                        "name": "Rice",
+                        "price": 1500,
+                        "image": "/item/1746088213384.png",
+                        "category": "Veg",
+                        "cuisine": "Gujarati",
+                        "createdAt": "2025-05-01T08:30:12.597Z",
+                        "updatedAt": "2025-05-01T08:30:12.597Z"
+                      },
+                      "quantity": 2,
+                      "price": 3000,
+                      "status": "Served"
+                    },
+                    {
+                      "menuItemId": {
+                        "_id": "6813311cecf96a7ae0a0cc09",
+                        "vendorId": "68132e745ba22849c6499ded",
+                        "type": "Lunch",
+                        "name": "Thali",
+                        "price": 1500,
+                        "image": "/item/1746088228897.png",
+                        "category": "Veg",
+                        "cuisine": "Gujarati",
+                        "createdAt": "2025-05-01T08:30:20.095Z",
+                        "updatedAt": "2025-05-01T08:30:20.095Z"
+                      },
+                      "quantity": 1,
+                      "price": 1500,
+                      "status": "Served"
+                    }
+                  ],
+                  "totalAmount": 1507500,
+                  "paymentStatus": "Paid",
+                  "orderStatus": "Completed",
+                  "createdAt": "2025-05-07T06:28:54.951Z",
+                  "completedAt": "2025-05-07T06:36:47.065Z"
+                }
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Invalid request - missing table number or invalid payment status"
+        },
+        "401": {
+          "description": "Unauthorized - invalid or missing authentication token"
+        },
+        "404": {
+          "description": "Table not found or no active order for the table"
+        },
+        "500": {
+          "description": "Internal server error"
+        }
+      }
+    }
+  },
+
+
+
+    "/auth/deliveryAgent/Login": {
+  "post": {
+    "tags": ["Delivery Agent"],
+    "summary": "Delivery agent login",
+    "operationId": "deliveryAgentLogin",
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "required": ["email", "password"],
+            "properties": {
+              "email": {
+                "type": "string",
+                "format": "email",
+                "example": "johnson.doe@example.com"
+              },
+              "password": {
+                "type": "string",
+                "format": "password",
+                "example": "securePass123"
+              }
+            }
+          },
+          "example": {
+            "email": "johnson.doe@example.com",
+            "password": "securePass123"
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Login successful",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Login successful!"
+                },
+                "token": {
+                  "type": "string",
+                  "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                },
+                "deliveryAgent": {
+                  "type": "object",
+                  "properties": {
+                    "userId": {
+                      "type": "string",
+                      "example": "6813306fa6071892860f5092"
+                    },
+                    "firstname": {
+                      "type": "string",
+                      "example": "Johnson"
+                    },
+                    "lastname": {
+                      "type": "string",
+                      "example": "Doe"
+                    },
+                    "number": {
+                      "type": "integer",
+                      "example": 98764153210
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "johnson.doe@example.com"
+                    },
+                    "vendorId": {
+                      "type": "string",
+                      "example": "68132e745ba22849c6499ded"
+                    },
+                    "isActive": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            },
+            "example": {
+              "success": true,
+              "message": "Login successful!",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+              "deliveryAgent": {
+                "userId": "6813306fa6071892860f5092",
+                "firstname": "Johnson",
+                "lastname": "Doe",
+                "number": 98764153210,
+                "email": "johnson.doe@example.com",
+                "vendorId": "68132e745ba22849c6499ded",
+                "isActive": true
+              }
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Unauthorized - invalid credentials"
+      }
+    }
+  }
+},
+
+"/auth/user/register": {
+  "post": {
+    "tags": ["Delivery Agent"],
+    "summary": "Register a new user",
+    "operationId": "registerUser",
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "firstname": {
+                "type": "string",
+                "example": "bhuvaaan"
+              },
+              "lastname": {
+                "type": "string",
+                "example": "bam"
+              },
+              "number": {
+                "type": "integer",
+                "example": 9876543210
+              },
+              "email": {
+                "type": "string",
+                "format": "email",
+                "example": "bhuvaan.bam@example.com"
+              }
+            },
+            "required": ["firstname", "lastname", "number", "email"]
+          }
+        }
+      }
+    },
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "User registered successfully by vendor",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "User registered successfully by vendor"
+                },
+                "token": {
+                  "type": "string",
+                  "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                },
+                "user": {
+                  "type": "object",
+                  "properties": {
+                    "userId": {
+                      "type": "string",
+                      "example": "681b4c6a40bc3f6fb0d5be03"
+                    },
+                    "firstname": {
+                      "type": "string",
+                      "example": "bhuvaaan"
+                    },
+                    "lastname": {
+                      "type": "string",
+                      "example": "bam"
+                    },
+                    "email": {
+                      "type": "string",
+                      "example": "bhuvaan.bam@example.com"
+                    },
+                    "number": {
+                      "type": "integer",
+                      "example": 9876543210
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Bad Request - Missing or invalid fields"
+      }
+    }
+  }
+},
+
+  "/deliveryagent/availableTable": {
+  "get": {
+    "tags": ["Delivery Agent"],
+    "summary": "Get available tables",
+    "operationId": "getAvailableTables",
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Available tables retrieved successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "availableTables": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  },
+                  "example": [1, 2, 3, 4, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+                }
+              }
+            },
+            "example": {
+              "success": true,
+              "availableTables": [1, 2, 3, 4, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Unauthorized - Invalid or missing token"
+      }
+    }
+  }
+},
+"/deliveryagent/assigntable": {
+  "post": {
+    "tags": ["Delivery Agent"],
+    "summary": "Assign table to user",
+    "operationId": "assignTable",
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "userId": {
+                "type": "string",
+                "example": "681af3b8153d8b317d839fe2"
+              },
+              "tableNo": {
+                "type": "integer",
+                "example": 6
+              }
+            },
+            "required": ["userId", "tableNo"]
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Table assigned successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Table 6 assigned successfully."
+                },
+                "order": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "example": "681b0305398960aba60ed554"
+                    },
+                    "tableNo": {
+                      "type": "integer",
+                      "example": 6
+                    },
+                    "userId": {
+                      "type": "string",
+                      "example": "681af3b8153d8b317d839fe2"
+                    },
+                    "vendorId": {
+                      "type": "string",
+                      "example": "68132e745ba22849c6499ded"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {}
+                    },
+                    "totalAmount": {
+                      "type": "number",
+                      "example": 0
+                    },
+                    "paymentStatus": {
+                      "type": ["string", "null"],
+                      "example": null
+                    },
+                    "orderStatus": {
+                      "type": "string",
+                      "example": "Active"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2025-05-07T06:51:49.415Z"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2025-05-07T06:51:49.415Z"
+                    },
+                    "__v": {
+                      "type": "integer",
+                      "example": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Invalid input"
+      }
+    }
+  }
+},
+"/deliveryagent/addItemsToOrder": {
+  "post": {
+    "tags": ["Delivery Agent"],
+    "summary": "Place order for table",
+    "operationId": "placeTableOrder",
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "tableNo": {
+                "type": "integer",
+                "example": 6
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "menuItemId": {
+                      "type": "string",
+                      "example": "68133114ecf96a7ae0a0cc07"
+                    },
+                    "quantity": {
+                      "type": "integer",
+                      "example": 2
+                    }
+                  },
+                  "required": ["menuItemId", "quantity"]
+                }
+              }
+            },
+            "required": ["tableNo", "items"]
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Order placed successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Items added/updated successfully."
+                },
+                "order": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "example": "681b0305398960aba60ed554"
+                    },
+                    "tableNo": {
+                      "type": "integer",
+                      "example": 6
+                    },
+                    "userId": {
+                      "type": "string",
+                      "example": "681af3b8153d8b317d839fe2"
+                    },
+                    "vendorId": {
+                      "type": "string",
+                      "example": "68132e745ba22849c6499ded"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "menuItemId": {
+                            "type": "string",
+                            "example": "68133100ecf96a7ae0a0cc05"
+                          },
+                          "quantity": {
+                            "type": "integer",
+                            "example": 1
+                          },
+                          "price": {
+                            "type": "number",
+                            "example": 1500000
+                          },
+                          "status": {
+                            "type": "string",
+                            "example": "Pending"
+                          }
+                        }
+                      }
+                    },
+                    "totalAmount": {
+                      "type": "number",
+                      "example": 1500000
+                    },
+                    "paymentStatus": {
+                      "type": ["string", "null"],
+                      "example": null
+                    },
+                    "orderStatus": {
+                      "type": "string",
+                      "example": "Active"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2025-05-07T06:51:49.415Z"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "example": "2025-05-07T06:51:54.584Z"
+                    },
+                    "__v": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Invalid input or missing data"
+      }
+    }
+  }
+},
+    "/deliveryagent/getOrderItems/{tableNo}": {
+  "get": {
+    "tags": ["Delivery Agent"],
+    "summary": "Get order items for table",
+    "operationId": "getOrderItems",
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "parameters": [
+      {
+        "name": "tableNo",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "example": 6
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Order items retrieved successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "tableNo": {
+                  "type": "string",
+                  "example": "6"
+                },
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "menuItemId": {
+                        "type": "object",
+                        "properties": {
+                          "_id": {
+                            "type": "string",
+                            "example": "68133114ecf96a7ae0a0cc07"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "rice"
+                          },
+                          "price": {
+                            "type": "number",
+                            "example": 1500
+                          },
+                          "category": {
+                            "type": "string",
+                            "example": "Veg"
+                          }
+                        }
+                      },
+                      "quantity": {
+                        "type": "integer",
+                        "example": 2
+                      },
+                      "price": {
+                        "type": "number",
+                        "example": 3000
+                      },
+                      "status": {
+                        "type": "string",
+                        "example": "Pending"
+                      }
+                    }
+                  }
+                },
+                "orderTotal": {
+                  "type": "number",
+                  "example": 1506000
+                },
+                "orderStatus": {
+                  "type": "string",
+                  "example": "Active"
+                },
+                "createdAt": {
+                  "type": "string",
+                  "format": "date-time",
+                  "example": "2025-05-07T12:15:33.798Z"
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Order not found for the given table"
+      }
+    }
+  }
+},
+    "/deliveryagent/removeOrderItem": {
+  "post": {
+    "tags": ["Delivery Agent"],
+    "summary": "Remove item from order",
+    "operationId": "removeOrderItem",
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "tableNo": {
+                "type": "integer",
+                "example": 6
+              },
+              "itemId": {
+                "type": "string",
+                "example": "68133114ecf96a7ae0a0cc07"
+              },
+              "status": {
+                "type": "string",
+                "example": "Pending"
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Item removed successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Item removed successfully"
+                },
+                "removedItem": {
+                  "type": "object",
+                  "properties": {
+                    "menuItemId": {
+                      "type": "string",
+                      "example": "68133114ecf96a7ae0a0cc07"
+                    },
+                    "quantity": {
+                      "type": "integer",
+                      "example": 2
+                    },
+                    "price": {
+                      "type": "number",
+                      "example": 3000
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "Pending"
+                    }
+                  }
+                },
+                "orderTotal": {
+                  "type": "number",
+                  "example": 1500000
+                },
+                "orderStatus": {
+                  "type": "string",
+                  "example": "Active"
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Item or table not found"
+      }
+    }
+  }
+},
+"/deliveryagent/updateItemStatus": {
+  "post": {
+    "tags": ["Delivery Agent"],
+    "summary": "Update item status",
+    "operationId": "updateItemStatus",
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "tableNo": {
+                "type": "integer",
+                "example": 6
+              },
+              "menuItemId": {
+                "type": "string",
+                "example": "68133114ecf96a7ae0a0cc07"
+              },
+              "fromStatus": {
+                "type": "string",
+                "example": "Preparing"
+              },
+              "status": {
+                "type": "string",
+                "example": "Served"
+              }
+            },
+            "required": ["tableNo", "menuItemId", "fromStatus", "status"]
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Item status updated successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Item status updated successfully."
+                },
+                "order": {
+                  "type": "object",
+                  "properties": {
+                    "_id": { "type": "string", "example": "681afda633386dd2057cc1ca" },
+                    "tableNo": { "type": "integer", "example": 6 },
+                    "userId": { "type": "string", "example": "681af3b8153d8b317d839fe2" },
+                    "vendorId": { "type": "string", "example": "68132e745ba22849c6499ded" },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "menuItemId": { "type": "string", "example": "68133114ecf96a7ae0a0cc07" },
+                          "quantity": { "type": "integer", "example": 2 },
+                          "price": { "type": "number", "example": 3000 },
+                          "status": { "type": "string", "example": "Served" }
+                        }
+                      }
+                    },
+                    "totalAmount": { "type": "number", "example": 1507500 },
+                    "paymentStatus": { "type": ["string", "null"], "example": null },
+                    "orderStatus": { "type": "string", "example": "Active" },
+                    "createdAt": { "type": "string", "format": "date-time", "example": "2025-05-07T06:28:54.951Z" },
+                    "updatedAt": { "type": "string", "format": "date-time", "example": "2025-05-07T06:36:07.779Z" },
+                    "__v": { "type": "integer", "example": 2 }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Order or item not found"
+      }
+    }
+  }
+}
+,
+
+
+
+"/alaystic/billdata": {
+  "get": {
+    "tags": ["Analytics"],
+    "summary": "Get bill data",
+    "operationId": "getBillData",
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "parameters": [
+      {
+        "name": "startDate",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "example": "2025-05-01"
+        }
+      },
+      {
+        "name": "endDate",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "example": "2025-12-31"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Bill data retrieved successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "totalOrders": {
+                  "type": "integer",
+                  "example": 2
+                },
+                "totalRevenue": {
+                  "type": "number",
+                  "example": 13500
+                },
+                "averageBillValue": {
+                  "type": "number",
+                  "example": 6750
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+,
+"/alaystic/dailySales": {
+  "get": {
+    "tags": ["Analytics"],
+    "summary": "Get daily sales",
+    "operationId": "getDailySales",
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "parameters": [
+      {
+        "name": "startDate",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "example": "2025-05-01"
+        }
+      },
+      {
+        "name": "endDate",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "example": "2025-12-31"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Daily sales data retrieved successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "dailySales": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "totalSales": {
+                        "type": "number",
+                        "example": 13500
+                      },
+                      "date": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2025-05-01"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+,
+"/alaystic/topDish": {
+  "get": {
+    "tags": ["Analytics"],
+    "summary": "Get top dishes",
+    "operationId": "getTopDishes",
+    "security": [
+        {
+          "bearerAuth": []
+        }
+      ],    
+    "parameters": [
+      {
+        "name": "startDate",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "example": "2025-05-01"
+        }
+      },
+      {
+        "name": "endDate",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "date",
+          "example": "2025-12-31"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Top dishes retrieved successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "topDishes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "totalSold": {
+                        "type": "integer",
+                        "example": 8
+                      },
+                      "dishId": {
+                        "type": "string",
+                        "example": "68133114ecf96a7ae0a0cc07"
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "rice"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+,
+"/alaystic/tableUsage": {
+  "get": {
+    "tags": ["Analytics"],
+    "summary": "Get table usage analytics",
+    "operationId": "getTableUsage",
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "parameters": [
+        {
+          "name": "startDate",
+          "in": "query",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "date",
+            "example": "2025-05-01"
+          }
+        },
+        {
+          "name": "endDate",
+          "in": "query",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "date",
+            "example": "2025-12-31"
+          }
+        }
+      ],
+    "responses": {
+      "200": {
+        "description": "Table usage data retrieved successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "tableUsage": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "usageCount": {
+                        "type": "integer",
+                        "example": 2
+                      },
+                      "tableNo": {
+                        "type": "integer",
+                        "example": 4
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+,
+"/alaystic/orderStatus": {
+  "get": {
+    "tags": ["Analytics"],
+    "summary": "Get order status analytics",
+    "operationId": "getOrderStatus",
+    "security": [
+      {
+        "bearerAuth": []
+      }
+    ],
+    "parameters": [
+        {
+          "name": "startDate",
+          "in": "query",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "date",
+            "example": "2025-05-01"
+          }
+        },
+        {
+          "name": "endDate",
+          "in": "query",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "date",
+            "example": "2025-12-31"
+          }
+        }
+      ],
+    "responses": {
+      "200": {
+        "description": "Order status data retrieved successfully",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "orderStatus": {
+                  "type": "object",
+                  "properties": {
+                    "Active": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "Completed": {
+                      "type": "integer",
+                      "example": 1
+                    },
+                    "Cancelled": {
+                      "type": "integer",
+                      "example": 0
+                    },
+                    "Reserved": {
+                      "type": "integer",
+                      "example": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
